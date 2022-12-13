@@ -24,19 +24,19 @@ public class MainApp {
 
         //        2. Создайте массив объектов типа Сотрудник (с полями Имя, Возраст, Зарплата) и вычислите
         //        среднюю зарплату сотрудника;
-        Employee[] employeeList = {
+        Employee[] employees = {
                 new Employee("Ivan", 40, 500_000.0),
                 new Employee("Alex", 33, 400_000.0),
                 new Employee("Semen", 22, 100_000.0),
                 new Employee("Oleg", 27, 250_000.0)
 
         };
-        System.out.println(mainApp.getAverageSalary(employeeList));
+        System.out.println(mainApp.getAverageSalary(employees));
 
         //        3. Напишите метод, способный найти в массиве сотрудников из п. 2 найдите N самых старших
         //        сотрудников и отпечатает в консоль сообщение вида “N самых старших сотрудников зовут:
         //        имя1, имя2, имяN;”.
-        mainApp.printOlderEmployee(employeeList, 3);
+        mainApp.printOlderEmployee(employees, 3);
     }
 
     public String getMaxRepeatWord(String[] strings) {
@@ -49,12 +49,12 @@ public class MainApp {
                 .orElse(null);
     }
 
-    public Double getAverageSalary(Employee[] employeeList) {
-        return Arrays.stream(employeeList).collect(Collectors.averagingDouble(Employee::getSalary));
+    public Double getAverageSalary(Employee[] employees) {
+        return Arrays.stream(employees).collect(Collectors.averagingDouble(Employee::getSalary));
     }
 
-    public void printOlderEmployee(Employee[] employeeList, Integer amountEmployee) {
-        System.out.println(Arrays.stream(employeeList)
+    public void printOlderEmployee(Employee[] employees, Integer amountEmployee) {
+        System.out.println(Arrays.stream(employees)
                 .sorted(Comparator.comparingInt(Employee::getAge).reversed())
                 .limit(amountEmployee)
                 .map(Employee::getName)
