@@ -54,7 +54,11 @@ public class MainApp {
     }
 
     public void printOlderEmployee(Employee[] employeeList, Integer amountEmployee) {
-        Arrays.stream(employeeList).sorted(Comparator.comparingInt(Employee::getAge).reversed()).limit(amountEmployee).map(Employee::getName).forEach(System.out::println);
+        System.out.println(Arrays.stream(employeeList)
+                .sorted(Comparator.comparingInt(Employee::getAge).reversed())
+                .limit(amountEmployee)
+                .map(Employee::getName)
+                .collect(Collectors.joining(", ", amountEmployee+ " самых старших сотрудников зовут: ", ". ")));
     }
 
 
